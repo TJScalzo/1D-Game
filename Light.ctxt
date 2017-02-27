@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Light()
+comment1.params=isOn
+comment1.target=Light(boolean)
+comment2.params=
+comment2.target=boolean\ returnIsOn()
+comment3.params=
+comment3.target=void\ toggle()
+numComments=4
