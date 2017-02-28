@@ -1,7 +1,7 @@
 public class LightRow
 {
     private Light[] row;
-    static boolean isClear = false;
+    private boolean isClear = false;
     
     public LightRow(int numLights)
     {
@@ -29,7 +29,11 @@ public class LightRow
     public boolean checkIfCleared()
     {
         //This method can be used to see if the row is clear/all one state
-        int lightsOn = 1; //This is just so BlueJ stops complainin
+        int lightsOn = 0;
+        for (int i = 0; i< row.length; i++) {
+            if (row[i].returnIsOn())
+                lightsOn++;
+        }
         isClear = lightsOn == 0;
         return isClear;
     }
