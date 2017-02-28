@@ -3,6 +3,14 @@ public class LightRow
     private Light[] row;
     private boolean isClear = false;
     
+    public LightRow()
+    {
+        row = new Light[5];
+        for (int i = 0; i < row.length; i++) {
+            row[i] = new Light();
+        }
+    }
+    
     public LightRow(int numLights)
     {
         row = new Light[numLights];
