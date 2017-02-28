@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=numLights
+comment0.target=LightRow(int)
+comment1.params=
+comment1.target=Light[]\ returnRow()
+comment2.params=
+comment2.target=void\ randomize()
+comment3.params=
+comment3.target=boolean\ checkIfCleared()
+numComments=4
