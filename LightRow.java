@@ -6,6 +6,9 @@ public class LightRow
     public LightRow(int numLights)
     {
         row = new Light[numLights];
+        for (int i = 0; i < row.length; i++) {
+            row[i] = new Light();
+        }
     }
     
     public Light[] returnRow()
