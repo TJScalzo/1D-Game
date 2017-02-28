@@ -15,7 +15,14 @@ public class LightRow
     
     public void randomize()
     {
-        //This method will be called by the GUI to randomize a row
+       for (int i = 0; i <= row.length; i++){
+           if (Math.random() < 0.5){
+             row[i].set(false);
+           }
+           else{
+             row[i].set(true);
+           }
+       }
     }
     
     public boolean checkIfCleared()

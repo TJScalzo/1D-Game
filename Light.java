@@ -23,4 +23,8 @@ public class Light
     {
         isOn = !isOn;
     }
+    
+    public void set(boolean status){
+        isOn = status;
+    }
 }

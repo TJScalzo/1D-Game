@@ -7,4 +7,6 @@ comment2.params=
 comment2.target=boolean\ returnIsOn()
 comment3.params=
 comment3.target=void\ toggle()
-numComments=4
+comment4.params=status
+comment4.target=void\ set(boolean)
+numComments=5
