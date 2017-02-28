@@ -18,13 +18,11 @@ public class LightRow
     
     public void randomize()
     {
-       for (int i = 0; i <= row.length; i++){
-           if (Math.random() < 0.5){
-             row[i].set(false);
-           }
-           else{
-             row[i].set(true);
-           }
+       for (int i = 0; i < row.length; i++) {
+           if (Math.random() < 0.5)
+               row[i].set(false);
+           else
+               row[i].set(true);
        }
     }
     
