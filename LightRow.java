@@ -1,8 +1,7 @@
 public class LightRow
 {
     private Light[] row;
-    private boolean isClear = false;
-    
+
     public LightRow()
     {
         row = new Light[5];
@@ -10,7 +9,7 @@ public class LightRow
             row[i] = new Light();
         }
     }
-    
+
     public LightRow(int numLights)
     {
         row = new Light[numLights];
@@ -18,31 +17,43 @@ public class LightRow
             row[i] = new Light();
         }
     }
-    
+
     public Light[] returnRow()
     {
         return row;
     }
-    
+
+    public int length()
+    {
+        return row.length;
+    }
+
     public void randomize()
     {
-       for (int i = 0; i < row.length; i++) {
+        for (int i = 0; i < row.length; i++) {
            if (Math.random() < 0.5)
                row[i].set(false);
            else
                row[i].set(true);
        }
     }
+
+    public void toggleNeighbors(int index)
+    {
+        row[index].toggle();
+        if (index-1 >= 0)
+            row[index-1].toggle();
+        if (index+1 < row.length)
+            row[index+1].toggle();
+    }
     
     public boolean checkIfCleared()
     {
-        //This method can be used to see if the row is clear/all one state
         int lightsOn = 0;
         for (int i = 0; i< row.length; i++) {
             if (row[i].returnIsOn())
                 lightsOn++;
         }
-        isClear = lightsOn == 0;
-        return isClear;
+        return lightsOn == 0;
     }
 }

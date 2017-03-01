@@ -1,2 +1,8 @@
 #BlueJ class context
-numComments=0
+comment0.params=
+comment0.target=void\ startGame()
+comment1.params=
+comment1.target=void\ displayBoard()
+comment2.params=
+comment2.target=void\ playGame()
+numComments=3
