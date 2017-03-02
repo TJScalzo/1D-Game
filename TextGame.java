@@ -30,18 +30,18 @@ public class TextGame {
             if (num >= 10)
                 numberSpacing = " ";
             printNumbers += numberSpacing + num + " ";
-            String status = "~";
+            char status = '~';
             if (gameRow.returnRow()[i].returnIsOn())
-                status = "O";
+                status = '*';//on
             else
-                status = "X";
+                status = '•'; //off
             printLights += " [" + status + "]";
         }
         System.out.println(printNumbers);
         System.out.println(printLights);
     }
     
-    public void playGame()
+    private void playGame()
     {
         while (!gameRow.checkIfCleared()) {
             Scanner input2 = new Scanner(System.in);
