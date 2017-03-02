@@ -19,6 +19,14 @@ public class Light
         return isOn;
     }
     
+    public char getStatus()
+    {
+        if (isOn)
+            return '*';
+        else
+            return '•';
+    }
+    
     public void toggle()
     {
         isOn = !isOn;
