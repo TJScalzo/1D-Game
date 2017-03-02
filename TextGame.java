@@ -51,5 +51,7 @@ public class TextGame {
                 displayBoard();
             }
         }
+        System.out.println();
+        System.out.println("You did it! All the lights are off!");
     }
 }
