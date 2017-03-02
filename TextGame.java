@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class TextGame {
     private LightRow gameRow;
     private int numLights;
+    private int numMoves = 0;
 
     public void startGame() {
         System.out.println("How many lights do you want in the row?");
@@ -27,6 +28,7 @@ public class TextGame {
         String printNumbers = "";
         String numberSpacing = "  ";
         String printLights = "";
+        System.out.println("MOVE " + numMoves);
         for (int i = 0; i < gameRow.length(); i++) {
             int num = i+1; // This is so the first number isn't 0
             if (num >= 10)
@@ -48,10 +50,10 @@ public class TextGame {
             if (light < 1 && light > gameRow.length()) {
                 System.out.println("That's an invalid number. Please enter a new one.");
             } else {
+                numMoves++;
                 int index = light-1; // This is so that it'll match the index, not the label
                 gameRow.toggleNeighbors(index);
                 displayBoard();
-                
             }
         }
         System.out.println();
