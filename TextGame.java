@@ -30,11 +30,7 @@ public class TextGame {
             if (num >= 10)
                 numberSpacing = " ";
             printNumbers += numberSpacing + num + " ";
-            char status = '~';
-            if (gameRow.returnRow()[i].returnIsOn())
-                status = '*';//on
-            else
-                status = '•'; //off
+            char status = gameRow.returnRow()[i].getStatus();
             printLights += " [" + status + "]";
         }
         System.out.println(printNumbers);
