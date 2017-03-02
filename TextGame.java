@@ -13,7 +13,9 @@ public class TextGame {
         else if (numLights < 3)
             numLights = 3;
         gameRow = new LightRow(numLights);
-        gameRow.randomize();
+        while (gameRow.checkIfCleared()) //makes sure the game doesn't start already solved
+            gameRow.randomize();
+        
         displayBoard();
 
         System.out.println();
@@ -36,7 +38,7 @@ public class TextGame {
         System.out.println(printNumbers);
         System.out.println(printLights);
     }
-    
+
     private void playGame()
     {
         while (!gameRow.checkIfCleared()) {
@@ -49,6 +51,7 @@ public class TextGame {
                 int index = light-1; // This is so that it'll match the index, not the label
                 gameRow.toggleNeighbors(index);
                 displayBoard();
+                
             }
         }
         System.out.println();
