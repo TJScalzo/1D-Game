@@ -25,10 +25,12 @@ public class TextGame {
     }
 
     private void displayBoard() {
+        System.out.println();
+        System.out.println();
+        System.out.println("MOVE " + numMoves);
         String printNumbers = "";
         String numberSpacing = "  ";
         String printLights = "";
-        System.out.println("MOVE " + numMoves);
         for (int i = 0; i < gameRow.length(); i++) {
             int num = i+1; // This is so the first number isn't 0
             if (num >= 10)
