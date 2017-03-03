@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class TextGame {
     private LightRow gameRow;
     private int numLights;
-    private int numMoves = 0;
+    private int numMoves;
 
     public void startGame() {
         System.out.println("How many lights do you want in the row?");
@@ -17,6 +17,7 @@ public class TextGame {
         while (gameRow.checkIfCleared()) //makes sure the game doesn't start already solved
             gameRow.randomize();
         
+        numMoves = 0;
         displayBoard();
 
         System.out.println();
