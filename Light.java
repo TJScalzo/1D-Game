@@ -19,12 +19,12 @@ public class Light
         return isOn;
     }
     
-    public char getStatus()
+    public String getStatus()
     {
         if (isOn)
-            return '*';
+            return "*";
         else
-            return '•';
+            return "•";
     }
     
     public void toggle()
