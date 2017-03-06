@@ -37,7 +37,7 @@ public class TextGame {
             if (num >= 10)
                 numberSpacing = " ";
             printNumbers += numberSpacing + num + " ";
-            char status = gameRow.returnRow()[i].getStatus();
+            String status = gameRow.returnRow()[i].getStatus();
             printLights += " [" + status + "]";
         }
         System.out.println(printNumbers);
