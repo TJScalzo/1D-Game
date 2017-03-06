@@ -2,6 +2,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -15,7 +16,7 @@ public class GuiGame extends Application {
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Lights Out!");
         // add input
-        numLights = 5;
+        numLights = 3;
         gameRow = new LightRow(numLights);
         buttonRow = new Button[numLights];
         GridPane gridPane = new GridPane();
@@ -25,35 +26,23 @@ public class GuiGame extends Application {
         
         for(int i = 0; i < numLights; i++){
             buttonRow[i] = new Button(gameRow.returnRow()[i].getStatus());
+            int index = i;
             buttonRow[i].setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event){
-                    gameRow.toggleNeighbors(index);
+                    gameRow.toggleNeighbors(gameRow.returnRow()[index].index);
+                    refresh();
+                    if(gameRow.checkIfCleared())
+                    {
+                        //add things
+                        Text winMessage = new Text("You have completed the game.");
+                        gridPane.add(winMessage, numLights, 0, 1, 1);
+                    }
                 }
                 
             });
             gridPane.add(buttonRow[i], i, 0, 1, 1);
         }
-        
-        
-        
-        /*
-        Button button0 = new Button(gameRow.returnRow()[0].getStatus());
-        Button button1 = new Button(gameRow.returnRow()[1].getStatus());
-        Button button2 = new Button(gameRow.returnRow()[2].getStatus());
-        Button button3 = new Button(gameRow.returnRow()[3].getStatus());
-        Button button4 = new Button(gameRow.returnRow()[4].getStatus());
-        */
-
-        
-        
-        /* 
-        gridPane.add(button0, 0, 0, 1, 1);
-        gridPane.add(button1, 1, 0, 1, 1);
-        gridPane.add(button2, 2, 0, 1, 1);
-        gridPane.add(button3, 3, 0, 1, 1);
-        gridPane.add(button4, 4, 0, 1, 1);
-        */
         
         Scene scene = new Scene(gridPane, 600, 300);
         primaryStage.setScene(scene);
@@ -61,7 +50,14 @@ public class GuiGame extends Application {
         
         gridPane.setVgap(8);
         gridPane.setHgap(8);
-        
+    }
+    
+    private void refresh()
+    {
+        for(int i = 0; i < numLights; i++)
+        {
+            buttonRow[i].setText(gameRow.returnRow()[i].getStatus());
+        }
     }
     
     public static void main(String[] args) {
