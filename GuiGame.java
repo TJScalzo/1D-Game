@@ -25,7 +25,6 @@ public class GuiGame extends Application {
         
         for(int i = 0; i < numLights; i++){
             buttonRow[i] = new Button(gameRow.returnRow()[i].getStatus());
-            int index = i;
             buttonRow[i].setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event){
