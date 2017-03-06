@@ -43,15 +43,10 @@ public class LightRow
     public void toggleNeighbors(int index)
     {
         row[index].toggle();
-        System.out.println("Toggling neighbors of " + index);
         if (index-1 >= 0)
             row[index-1].toggle();
         if (index+1 < row.length)
             row[index+1].toggle();
-            
-        for(int i = 0; i < row.length; i++) {
-            System.out.println("Status of light " + i + ": " + row[i].returnIsOn());
-        }
     }
     
     public boolean checkIfCleared()
