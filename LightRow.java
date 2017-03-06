@@ -7,6 +7,7 @@ public class LightRow
         row = new Light[5];
         for (int i = 0; i < row.length; i++) {
             row[i] = new Light();
+            row[i].index = i;
         }
     }
 
@@ -15,6 +16,7 @@ public class LightRow
         row = new Light[numLights];
         for (int i = 0; i < row.length; i++) {
             row[i] = new Light();
+            row[i].index = i;
         }
     }
 

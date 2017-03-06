@@ -1,6 +1,7 @@
 public class Light
 {
     private boolean isOn;
+    public int index;
     
     //Constructors
     public Light()
