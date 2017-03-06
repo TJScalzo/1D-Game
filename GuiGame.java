@@ -31,11 +31,14 @@ public class GuiGame extends Application {
                 @Override
                 public void handle(ActionEvent event){
                     gameRow.toggleNeighbors(gameRow.returnRow()[index].index);
+                    numMoves++;
                     refresh();
                     if(gameRow.checkIfCleared())
                     {
-                        //add things
-                        Text winMessage = new Text("You have completed the game.");
+                        String plural = "";
+                        if(numMoves > 1)
+                            plural = "s";
+                        Text winMessage = new Text("You completed the game in " + numMoves + " move" + plural + "!");
                         gridPane.add(winMessage, numLights, 0, 1, 1);
                     }
                 }
