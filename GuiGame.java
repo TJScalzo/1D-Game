@@ -26,17 +26,17 @@ public class GuiGame extends Application {
             @Override
             public void handle(ActionEvent event){
                 numLights--;
-                gamePlay(numLights);
+                System.out.println(numLights);
             }
         });
         gridPane.add(decrementDifficulty, 0, 1, 1, 1);
         
         Button incrementDifficulty = new Button("+");
-        decrementDifficulty.setOnAction(new EventHandler<ActionEvent>() {
+        incrementDifficulty.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event){
                 numLights++;
-                gamePlay(numLights);
+                System.out.println(numLights);
             }
         });
         gridPane.add(incrementDifficulty, 1, 1, 1, 1);
@@ -96,7 +96,8 @@ public class GuiGame extends Application {
                 gridPane.getChildren().remove(winMessage);
                 for (int i = 0; i < numLights; i++)
                     gridPane.getChildren().remove(buttonRow[i]);
-                gamePlay(numLights);
+                gridPane.getChildren().remove(restart);
+                gamePlay(returnNumLights());
             }
             
         });
@@ -109,6 +110,11 @@ public class GuiGame extends Application {
         {
             buttonRow[i].setText(gameRow.returnRow()[i].getStatus());
         }
+    }
+    
+    public int returnNumLights()
+    {
+        return numLights;
     }
     
     public static void main(String[] args) {
