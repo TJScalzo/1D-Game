@@ -13,6 +13,7 @@ public class GuiGame extends Application {
     private int numMoves;
     private Button[] buttonRow;
     private GridPane gridPane = new GridPane();
+    private Text winMessage;
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Lights Out!");
@@ -22,12 +23,25 @@ public class GuiGame extends Application {
         
         gamePlay(numLights);
         
+        
+        Button restart = new Button("Restart");
+        restart.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event){
+                gamePlay(numLights);
+                gridPane.getChildren().remove(winMessage);
+            }
+            
+        });
+        gridPane.add(restart, numLights, 0, 1, 1);
+        
         Scene scene = new Scene(gridPane, 600, 300);
         primaryStage.setScene(scene);
         primaryStage.show();
         
         Button decrementDifficulty = new Button("-");
         Button incrementDifficulty = new Button("+");
+        
         
         
         
@@ -57,8 +71,8 @@ public class GuiGame extends Application {
                         String plural = "";
                         if(numMoves > 1)
                             plural = "s";
-                        Text winMessage = new Text("You completed the game in " + numMoves + " move" + plural + "!");
-                        gridPane.add(winMessage, numLights, 0, 1, 1);
+                        winMessage = new Text("You completed the game in " + numMoves + " move" + plural + "!");
+                        gridPane.add(winMessage, numLights+1, 0, 1, 1);
                     }
                 }
                 
