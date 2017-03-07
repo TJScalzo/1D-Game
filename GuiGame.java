@@ -12,14 +12,33 @@ public class GuiGame extends Application {
     private int numLights;
     private int numMoves;
     private Button[] buttonRow;
+    private GridPane gridPane = new GridPane();
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Lights Out!");
         // add input
-        numLights = 3;
+        numLights = 5;
+
+        
+        gamePlay(numLights);
+        
+        Scene scene = new Scene(gridPane, 600, 300);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        
+        Button decrementDifficulty = new Button("-");
+        Button incrementDifficulty = new Button("+");
+        
+        
+        
+        gridPane.setVgap(8);
+        gridPane.setHgap(8);
+    }
+    
+    public void gamePlay(int numLights)
+    {
         gameRow = new LightRow(numLights);
         buttonRow = new Button[numLights];
-        GridPane gridPane = new GridPane();
         
         while (gameRow.checkIfCleared()) //makes sure the game doesn't start already solved
             gameRow.randomize();
@@ -46,15 +65,8 @@ public class GuiGame extends Application {
             });
             gridPane.add(buttonRow[i], i, 0, 1, 1);
         }
-        
-        Scene scene = new Scene(gridPane, 600, 300);
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        
-        gridPane.setVgap(8);
-        gridPane.setHgap(8);
     }
-    
+
     private void refresh()
     {
         for(int i = 0; i < numLights; i++)
