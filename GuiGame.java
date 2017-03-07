@@ -18,16 +18,32 @@ public class GuiGame extends Application {
         primaryStage.setTitle("Lights Out!");
         // add input
         numLights = 5;
-
+        
+        Button decrementDifficulty = new Button("-");
+        decrementDifficulty.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event){
+                    numLights--;
+                    gamePlay(numLights);
+                }
+        });
+        gridPane.add(decrementDifficulty, 0, 1, 1, 1);
+        
+        Button incrementDifficulty = new Button("+");
+        decrementDifficulty.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event){
+                    numLights++;
+                    gamePlay(numLights);
+                }
+        });
+        gridPane.add(incrementDifficulty, 1, 1, 1, 1);
         
         gamePlay(numLights);
         
         Scene scene = new Scene(gridPane, 600, 300);
         primaryStage.setScene(scene);
         primaryStage.show();
-        
-        Button decrementDifficulty = new Button("-");
-        Button incrementDifficulty = new Button("+");
         
         
         
