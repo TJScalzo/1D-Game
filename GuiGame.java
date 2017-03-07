@@ -6,6 +6,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.text.Font;
 
 public class GuiGame extends Application {
     private LightRow gameRow;
@@ -22,37 +23,25 @@ public class GuiGame extends Application {
         
         Button decrementDifficulty = new Button("-");
         decrementDifficulty.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event){
-                    numLights--;
-                    gamePlay(numLights);
-                }
+            @Override
+            public void handle(ActionEvent event){
+                numLights--;
+                gamePlay(numLights);
+            }
         });
         gridPane.add(decrementDifficulty, 0, 1, 1, 1);
         
         Button incrementDifficulty = new Button("+");
         decrementDifficulty.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event){
-                    numLights++;
-                    gamePlay(numLights);
-                }
+            @Override
+            public void handle(ActionEvent event){
+                numLights++;
+                gamePlay(numLights);
+            }
         });
         gridPane.add(incrementDifficulty, 1, 1, 1, 1);
         
         gamePlay(numLights);
-        
-        
-        Button restart = new Button("Restart");
-        restart.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event){
-                gamePlay(numLights);
-                gridPane.getChildren().remove(winMessage);
-            }
-            
-        });
-        gridPane.add(restart, numLights, 0, 1, 1);
         
         Scene scene = new Scene(gridPane, 600, 300);
         primaryStage.setScene(scene);
@@ -93,8 +82,25 @@ public class GuiGame extends Application {
                 }
                 
             });
+            /*
+            Font buttonFont = new Font("Consolas");
+            buttonRow[i].setFont(buttonFont);
+            */
             gridPane.add(buttonRow[i], i, 0, 1, 1);
         }
+        
+        Button restart = new Button("Restart");
+        restart.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event){
+                gridPane.getChildren().remove(winMessage);
+                for (int i = 0; i < numLights; i++)
+                    gridPane.getChildren().remove(buttonRow[i]);
+                gamePlay(numLights);
+            }
+            
+        });
+        gridPane.add(restart, numLights, 0, 1, 1);
     }
 
     private void refresh()
