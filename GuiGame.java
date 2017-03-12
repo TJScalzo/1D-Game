@@ -16,6 +16,7 @@ public class GuiGame extends Application {
     private GridPane gridPane = new GridPane();
     private Text winMessage;
     private Text numLightsLabel;
+    private boolean won = false;
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Lights Out!");
@@ -75,16 +76,19 @@ public class GuiGame extends Application {
             buttonRow[i].setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event){
-                    gameRow.toggleNeighbors(gameRow.returnRow()[index].index);
-                    numMoves++;
-                    refresh();
-                    if(gameRow.checkIfCleared())
-                    {
+                    if (!gameRow.checkIfCleared()) {
+                        gameRow.toggleNeighbors(gameRow.returnRow()[index].index);
+                        numMoves++;
+                        refresh();
+                    }
+                    
+                    if (gameRow.checkIfCleared() && !won) {
                         String plural = "";
                         if(numMoves > 1)
                             plural = "s";
                         winMessage = new Text("You completed the game in " + numMoves + " move" + plural + "!");
                         gridPane.add(winMessage, numLights+1, 0, 1, 1);
+                        won = true;
                     }
                 }
                 
@@ -105,6 +109,7 @@ public class GuiGame extends Application {
                     gridPane.getChildren().remove(buttonRow[i]);
                 gridPane.getChildren().remove(restart);
                 numMoves = 0;
+                won = false;
                 gamePlay(returnNumLights());
             }
         });
