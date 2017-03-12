@@ -11,7 +11,7 @@ import javafx.scene.text.Font;
 public class GuiGame extends Application {
     private LightRow gameRow;
     private int numLights;
-    private int numMoves;
+    private int numMoves = 0;
     private Button[] buttonRow;
     private GridPane gridPane = new GridPane();
     private Text winMessage;
@@ -25,7 +25,8 @@ public class GuiGame extends Application {
         decrementDifficulty.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event){
-                numLights--;
+                if (numLights > 3)
+                    numLights--;
                 System.out.println(numLights);
             }
         });
@@ -35,7 +36,8 @@ public class GuiGame extends Application {
         incrementDifficulty.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event){
-                numLights++;
+                if (numLights < 15)
+                    numLights++;
                 System.out.println(numLights);
             }
         });
@@ -97,9 +99,9 @@ public class GuiGame extends Application {
                 for (int i = 0; i < numLights; i++)
                     gridPane.getChildren().remove(buttonRow[i]);
                 gridPane.getChildren().remove(restart);
+                numMoves = 0;
                 gamePlay(returnNumLights());
             }
-            
         });
         gridPane.add(restart, numLights, 0, 1, 1);
     }
