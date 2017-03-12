@@ -15,10 +15,10 @@ public class GuiGame extends Application {
     private Button[] buttonRow;
     private GridPane gridPane = new GridPane();
     private Text winMessage;
+    private Text numLightsLabel;
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Lights Out!");
-        // add input
         numLights = 5;
         
         Button decrementDifficulty = new Button("-");
@@ -27,10 +27,14 @@ public class GuiGame extends Application {
             public void handle(ActionEvent event){
                 if (numLights > 3)
                     numLights--;
+                numLightsLabel.setText(Integer.toString(returnNumLights()));
                 System.out.println(numLights);
             }
         });
         gridPane.add(decrementDifficulty, 0, 1, 1, 1);
+        
+        numLightsLabel = new Text(Integer.toString(returnNumLights()));
+        gridPane.add(numLightsLabel, 1, 1, 1, 1);
         
         Button incrementDifficulty = new Button("+");
         incrementDifficulty.setOnAction(new EventHandler<ActionEvent>() {
@@ -38,10 +42,11 @@ public class GuiGame extends Application {
             public void handle(ActionEvent event){
                 if (numLights < 15)
                     numLights++;
+                numLightsLabel.setText(Integer.toString(returnNumLights()));
                 System.out.println(numLights);
             }
         });
-        gridPane.add(incrementDifficulty, 1, 1, 1, 1);
+        gridPane.add(incrementDifficulty, 2, 1, 1, 1);
         
         gamePlay(numLights);
         
