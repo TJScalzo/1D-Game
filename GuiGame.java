@@ -29,7 +29,6 @@ public class GuiGame extends Application {
                 if (numLights > 3)
                     numLights--;
                 numLightsLabel.setText(Integer.toString(returnNumLights()));
-                System.out.println(numLights);
             }
         });
         gridPane.add(decrementDifficulty, 0, 1, 1, 1);
@@ -44,7 +43,6 @@ public class GuiGame extends Application {
                 if (numLights < 15)
                     numLights++;
                 numLightsLabel.setText(Integer.toString(returnNumLights()));
-                System.out.println(numLights);
             }
         });
         gridPane.add(incrementDifficulty, 2, 1, 1, 1);
@@ -54,9 +52,6 @@ public class GuiGame extends Application {
         Scene scene = new Scene(gridPane, 600, 300);
         primaryStage.setScene(scene);
         primaryStage.show();
-        
-        
-        
         
         gridPane.setVgap(8);
         gridPane.setHgap(8);
