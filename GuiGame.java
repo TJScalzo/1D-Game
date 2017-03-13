@@ -10,7 +10,7 @@ import javafx.scene.text.Font;
 
 public class GuiGame extends Application {
     private LightRow gameRow;
-    private int numLights;
+    private int numLights = 5;
     private int numMoves = 0;
     private Button[] buttonRow;
     private GridPane gridPane = new GridPane();
@@ -20,7 +20,6 @@ public class GuiGame extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Lights Out!");
-        numLights = 5;
         
         Button decrementDifficulty = new Button("-");
         decrementDifficulty.setOnAction(new EventHandler<ActionEvent>() {
